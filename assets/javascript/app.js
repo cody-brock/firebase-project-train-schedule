@@ -13,8 +13,8 @@ $("#submit").on("click", function(event) {
 
     name = $("#name-input").val().trim();
     destination = $("#destination-input").val().trim();
-    frequency = $("#train-time-input").val().trim();
-    arrival = 79;
+    arrival = $("#train-time-input").val().trim();
+    frequency = $("#frequency-input").val().trim();
     minutesAway = 81;
 
     database.ref().push({
@@ -25,6 +25,12 @@ $("#submit").on("click", function(event) {
         minutesAway,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
     })
+
+    $("#name-input").val("");
+    $("#destination-input").val("");
+    $("#train-time-input").val("");
+    $("#frequency-input").val("");
+
 })
 
 database.ref().on("child_added", function(snapshot) {
