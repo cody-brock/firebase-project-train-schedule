@@ -75,13 +75,15 @@
                                 </div>
                                 <div class="form-group row">
                                 <label for="train-time-input">First Train Time (HH:mm - military time)</label>
-                                <input class="form-control" id="train-time-input" type="number">
+                                <input class="form-control" id="train-time-input" type="time">
                                 </div>
                                 <div class="form-group row">
                                 <label for="frequency-input">Frequency (min)</label>
                                 <input class="form-control" id="frequency-input" type="number">
                                 </div>
+                                <div id="warning" style="visibility: hidden;">Please enter all fields, then resubmit</div>
                                 <button class="btn btn-default" id="submit" type="submit">Submit</button>
+                                
                             </form>
             
                         </div>
@@ -122,6 +124,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <!-- moment file -->
+        <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
         <!-- my js file -->
         <script src="./assets/javascript/app.js" async defer></script>

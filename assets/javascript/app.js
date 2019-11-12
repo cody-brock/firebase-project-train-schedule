@@ -9,13 +9,16 @@ var minutesAway = 0;
 $("#submit").on("click", function(event) {
     event.preventDefault();
 
-    console.log("anything?")
-
     name = $("#name-input").val().trim();
     destination = $("#destination-input").val().trim();
     arrival = $("#train-time-input").val().trim();
     frequency = $("#frequency-input").val().trim();
     minutesAway = 81;
+
+    if (name === "" || destination === "" || arrival === "" || frequency === "") {
+        $("#warning").css("visibility", "visible");
+        return
+    }
 
     database.ref().push({
         name,
@@ -30,6 +33,7 @@ $("#submit").on("click", function(event) {
     $("#destination-input").val("");
     $("#train-time-input").val("");
     $("#frequency-input").val("");
+    $("#warning").css("visibility", "hidden");
 
 })
 
@@ -45,7 +49,6 @@ database.ref().on("child_added", function(snapshot) {
 
     var row = $("<tr>");
     row.append($("<td>").text(snapshot.val().name))
-    row.append($("<td>").text(snapshot.val().destination))
     row.append($("<td>").text(snapshot.val().destination))
     row.append($("<td>").text(snapshot.val().frequency))
     row.append($("<td>").text(snapshot.val().arrival))
