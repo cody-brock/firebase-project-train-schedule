@@ -81,7 +81,7 @@
                                 <label for="frequency-input">Frequency (min)</label>
                                 <input class="form-control" id="frequency-input" type="number">
                                 </div>
-                                <button class="btn btn-default" id="add-train" type="submit">Submit</button>
+                                <button class="btn btn-default" id="submit" type="submit">Submit</button>
                             </form>
             
                         </div>
@@ -90,10 +90,41 @@
             </div>
         </div>
 
+        <!-- FIREBASE files -->
+            <!-- The core Firebase JS SDK is always required and must be listed first -->
+            <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+            <!-- TODO: Add SDKs for Firebase products that you want to use
+                https://firebase.google.com/docs/web/setup#available-libraries -->
+            <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+            <!-- realtime file -->
+            <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-database.js"></script>
+
+            <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyDCARaHfAcmyrgAJe4LnAPjSUdDldYaX9Q",
+                authDomain: "train-schedule-70f95.firebaseapp.com",
+                databaseURL: "https://train-schedule-70f95.firebaseio.com",
+                projectId: "train-schedule-70f95",
+                storageBucket: "train-schedule-70f95.appspot.com",
+                messagingSenderId: "880015331189",
+                appId: "1:880015331189:web:4ef775dbe266ac3d8d0d3c",
+                measurementId: "G-8METP56NGL"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+            </script>
+        <!-- end FIREBASE files -->
         
+        <!-- jquery and bootstrap files -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <!-- my js file -->
         <script src="./assets/javascript/app.js" async defer></script>
+
     </body>
 </html>
