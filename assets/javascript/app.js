@@ -15,8 +15,8 @@ $("#submit").on("click", function(event) {
 
     name = $("#name-input").val().trim();
     destination = $("#destination-input").val().trim();
-    arrival = $("#train-time-input").val().trim();
-    frequency = $("#frequency-input").val().trim();
+    arrival = moment($("#train-time-input").val().trim(), "HH:mm").format("HH:mm");
+    frequency = parseInt($("#frequency-input").val().trim());
     minutesAway = 81;
 
     if (name === "" || destination === "" || arrival === "" || frequency === "") {
@@ -33,13 +33,6 @@ $("#submit").on("click", function(event) {
     } else {
         console.log("valid time!")
     }
-
-    // let dateCheck = /^[0-9]{1,2}:[0-9]{1,2}$/
-    // if (arrival.match(dateCheck)) {
-    //     console.log("well I'll be damned")
-    // } else {
-    //     console.log("well call me a brisket")
-    // }
 
     database.ref().push({
         name,
@@ -67,13 +60,34 @@ database.ref().on("child_added", function(snapshot) {
     console.log(snapshot.val().arrival);
     console.log(snapshot.val().minutesAway);
 
+    let frequency = snapshot.val().frequency
+    let arrival = snapshot.val().arrival;
+    console.log("arrival", arrival);
+
+    // let  difference = (moment().diff(moment(arrival, "HH:mm"), 'minutes'))
+    let difference = moment(arrival, "HH:mm").diff(moment(), 'minutes')
+    console.log("moment now", moment());
+    console.log("difference", difference);
+
+    if (difference >= 0) {
+        arrival = snapshot.val().arrival
+        minutesAway = difference;
+        (console.log("arrival", arrival));
+        (console.log("minutesAway", minutesAway));
+    } else if (difference < 0) {
+        minutesAway = frequency - (Math.abs(difference) % frequency);
+        console.log("minutesAway", minutesAway)
+        arrival = moment().add(minutesAway, 'minutes').format("HH:mm");
+    }
+
+
 
     var row = $("<tr>");
     row.append($("<td>").text(snapshot.val().name))
     row.append($("<td>").text(snapshot.val().destination))
     row.append($("<td>").text(snapshot.val().frequency))
-    row.append($("<td>").text(snapshot.val().arrival))
-    row.append($("<td>").text(snapshot.val().minutesAway))
+    row.append($("<td>").text(arrival))
+    row.append($("<td>").text(minutesAway))
 
     $("#table").append(row);
 
