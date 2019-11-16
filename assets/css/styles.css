@@ -1,3 +1,29 @@
-h1 {
-    color: red;
+body {
+    background: url(https://images.unsplash.com/photo-1515705576963-95cad62945b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
+
+.jumbotron {
+    margin-top: 30px;
+}
+
+.card-header {
+    background-color: rgb(139, 255, 119);
+    color: black
+}
+
+.card2 {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+
+
+.btn {
+    color: blue;
+    background-color: darkturquoise;
+}
+
